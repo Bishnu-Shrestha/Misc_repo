@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: grey;
+      }
+      #myInput {
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      type="text"
+      id="myInput"
+      onkeyup="myFunction()"
+      placeholder="Search for names.."
+    />
+
+    <ul id="myUL">
+      <li><a href="#">John</a></li>
+      <li><a href="#">Emma</a></li>
+      <li><a href="#">Sophia</a></li>
+      <li><a href="#">Oliver</a></li>
+      <li><a href="#">Mia</a></li>
+      <li><a href="#">pokemon</a></li>
+    </ul>
+    <button id="myButton">btn</button>
+    <script>
+      function myFunction() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName("li");
+
+        for (i = 0; i < li.length; i++) {
+          a = li[i].getElementsByTagName("a")[0];
+          txtValue = a.textContent || a.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+          } else {
+            li[i].style.display = "none";
+          }
+        }
+      }
+      // Get the button element
+      var btn = document.getElementById("myButton");
+
+      // Add the first click event listener to the button
+      btn.addEventListener("click", function () {
+        console.log("First event listener was triggered!");
+      });
+
+      // Add the second click event listener to the button
+      btn.addEventListener("click", function () {
+        console.log("Second event listener was triggered!");
+      });
+    </script>
+  </body>
+</html>
